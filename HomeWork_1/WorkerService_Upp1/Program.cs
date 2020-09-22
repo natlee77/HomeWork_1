@@ -57,10 +57,10 @@ namespace WorkerService_Upp1
             Hight
         }
 
-        public static int CheckTemperature()
+        static void CheckTemperature()
         {
 
-            var temperature = result;
+            var temperature = result;  // ??? påbyggnad på result från  async Task<OkObjectResult> 
             var _templevel;
 
             switch (temperature)  //  kan jämföra olika nivå
@@ -86,8 +86,10 @@ namespace WorkerService_Upp1
            
         }
 
-        public static async Task<OkObjectResult> Run()
-        {
+        public static async Task<OkObjectResult> Run()/* jag tror jag vill ha result från _url som ska ge mig nån svar
+                                                            * och over till json 
+                                                            * men jag förstå inte hur jag ska hämta det från Worker */
+        { 
 
 
                var result = await Task.Run(() =>{                   
