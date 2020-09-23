@@ -60,7 +60,7 @@ namespace WorkerService_Upp1
         static void CheckTemperature()
         {
 
-            var temperature = result;  // ??? påbyggnad på result från  async Task<OkObjectResult> 
+            var temperature = result;  // ??? påbyggnad på result  från Api> 
             var _templevel= Level ("Hight", "Low", "Normal" )  ;
 
             switch (temperature)  //  kan jämföra olika nivå
