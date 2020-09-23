@@ -14,6 +14,7 @@ namespace WorkerService_Upp1
 
         private HttpClient _client;
         public HttpResponseMessage _result;
+       
         
 
         public Worker(ILogger<Worker> logger)

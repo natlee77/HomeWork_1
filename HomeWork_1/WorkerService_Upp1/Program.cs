@@ -61,7 +61,7 @@ namespace WorkerService_Upp1
         {
 
             var temperature = result;  // ??? påbyggnad på result från  async Task<OkObjectResult> 
-            var _templevel;
+            var _templevel= Level ("Hight", "Low", "Normal" )  ;
 
             switch (temperature)  //  kan jämföra olika nivå
             {
@@ -86,22 +86,13 @@ namespace WorkerService_Upp1
            
         }
 
-        public static async Task<OkObjectResult> Run()/* jag tror jag vill ha result från _url som ska ge mig nån svar
-                                                            * och over till json 
-                                                            * men jag förstå inte hur jag ska hämta det från Worker */
+         /* jag tror jag vill ha result från _url som ska ge mig nån svar
+          * men jag förstå inte hur jag ska hämta det från Worker
+          * eller det hämtas automatisk till class Temperature model om jag gör nånting ,
+          * vad är det nånting  */
         { 
 
 
-               var result = await Task.Run(() =>{                   
-                   var temperature = ????;        
-                   
-                   return JsonConvert.SerializeObject(new TemperatureModel()
-                   {
-                       Temperature = ?????
-                   }); 
-               });
-                return new OkObjectResult(result);
-        }
 
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
