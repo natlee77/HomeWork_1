@@ -43,46 +43,7 @@ namespace WorkerService_Upp1
             }
         }
 
-        public enum Level
-        {
-            Low,
-            Normal,
-            Hight
-        }
-
-        static void CheckTemperature()
-        {
-
-            var temperature = 4;
-            var _templevel = Level.Low;
-
-
-            switch (temperature)  //  kan jämföra olika nivå
-            {
-                case var t when t < 5:
-                    _templevel = Level.Low;
-                    break;
-
-                case var t when t > 30:
-                    _templevel = Level.Hight;
-                    break;
-
-                default:
-                    _templevel = Level.Normal;
-                    break;
-            }
-            if (true)
-            {
-                _templevel = Level.Low;
-                Console.WriteLine("Temperature is too low . Check your plants!!!");
-            }
-
-
-        }
-
-
-
-
+       
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
         

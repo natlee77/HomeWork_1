@@ -10,25 +10,17 @@ namespace WorkerService_Upp1
     public class Worker : BackgroundService
     {
         public readonly ILogger<Worker> _logger;
-        private readonly string _url = "https://api.openweathermap.org/data/2.5/onecall?lat=59.23797&lon=14.43077&units=metric&exclude=current.temp&appid=594a02d31f7827d13d00eb499ee71ef4";
+        private static Random rnd = new Random();
 
-        private HttpClient _client;
-        public HttpResponseMessage _result;
-       
-        
 
-        public Worker(ILogger<Worker> log)
+        public Worker(ILogger<Worker> logger)
         {
-            _logger = log;
-
+            _logger = logger;
         }
 
 
         public override Task StartAsync(CancellationToken cancellationToken)
-        {
-
-            _client = new HttpClient();
-
+        {                       
             _logger.LogInformation("THE SERVICE HAS BEEN STARTAD.");
             return base.StartAsync(cancellationToken);
         }
@@ -36,34 +28,31 @@ namespace WorkerService_Upp1
 
         public override Task StopAsync(CancellationToken cancellationToken)
         {
-            _client.Dispose();
-
             _logger.LogInformation("THE SERVICE HAS BEEN STOPPAD.");
             return base.StopAsync(cancellationToken);
         }
 
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-
-
-
+        {           
             while (!stoppingToken.IsCancellationRequested)
             {
+                int random_t = rnd.Next(-10, 35);
                 try
-                {
-                    _result = await _client.GetAsync(_url);
+                {   
+                    if (random_t <= 5 )
+                        _logger.LogInformation($"The temperature är { random_t}  too low . Ckeck your plants in the garden. ");
 
-                    if (_result.IsSuccessStatusCode)
-                        _logger.LogInformation($"The website { _url} is up. StatusCode={_result.StatusCode} ");
-
+                    else if ( random_t >= 25)
+                        _logger.LogInformation($"The temperature är { random_t}  too hight . Watter your plants in the garden.  ");
+                    
                     else
-                        _logger.LogInformation($"The website { _url} is down. StatusCode={_result.StatusCode} ");
+                        _logger.LogInformation($"The temperature är { random_t}  C .   ");
                 }
 
                 catch (Exception ex)
                 {
-                    _logger.LogInformation($"Failed . THE WEBSITE ({_url}) - {ex.Message}");
+                    _logger.LogInformation($"Failed . {ex.Message}");
                 }
 
 
@@ -71,15 +60,7 @@ namespace WorkerService_Upp1
                 await Task.Delay(60000, stoppingToken);
 
             }
-
-
-
-
         }
-
-
-    }   
-
-                
+    }                
 }
 
