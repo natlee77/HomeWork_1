@@ -41,7 +41,7 @@ namespace WorkerService_Upp1
                 try
                 {   
                     if (random_t <= 5 )
-                        _logger.LogInformation($"The temperature är { random_t}  too low . Ckeck your plants in the garden. ");
+                        _logger.LogInformation($"The temperature är { random_t}  too low . Check your plants in the garden. ");
 
                     else if ( random_t >= 25)
                         _logger.LogInformation($"The temperature är { random_t}  too hight . Watter your plants in the garden.  ");
