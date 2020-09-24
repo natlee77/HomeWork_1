@@ -17,9 +17,7 @@ namespace WorkerService_Upp1
     public class Program
     {
 
-        private static Random rnd = new Random();
-
-        public static void Main(string[] args)
+       public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Debug()
@@ -44,13 +42,8 @@ namespace WorkerService_Upp1
                 Log.CloseAndFlush();
             }
         }
-                
-            
-                
-            
 
-
-         public enum Level
+        public enum Level
         {
             Low,
             Normal,
@@ -60,8 +53,9 @@ namespace WorkerService_Upp1
         static void CheckTemperature()
         {
 
-            var temperature = result;  // ??? påbyggnad på result  från Api> 
-            var _templevel= Level ("Hight", "Low", "Normal" )  ;
+            var temperature = 4;
+            var _templevel = Level.Low;
+
 
             switch (temperature)  //  kan jämföra olika nivå
             {
@@ -77,20 +71,14 @@ namespace WorkerService_Upp1
                     _templevel = Level.Normal;
                     break;
             }
-            if(_templevel)
+            if (true)
             {
                 _templevel = Level.Low;
                 Console.WriteLine("Temperature is too low . Check your plants!!!");
             }
-            
-           
-        }
 
-         /* jag tror jag vill ha result från _url som ska ge mig nån svar
-          * men jag förstå inte hur jag ska hämta det från Worker
-          * eller det hämtas automatisk till class Temperature model om jag gör nånting ,
-          * vad är det nånting  */
-        { 
+
+        }
 
 
 

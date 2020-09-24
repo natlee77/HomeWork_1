@@ -17,9 +17,9 @@ namespace WorkerService_Upp1
        
         
 
-        public Worker(ILogger<Worker> logger)
+        public Worker(ILogger<Worker> log)
         {
-            _logger = logger;
+            _logger = log;
 
         }
 
